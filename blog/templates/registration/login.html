@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% load  crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <h1>Авторизация</h1>
+        <hr>
+        <div class="col-6 justify-center">
+            <form method="post" class="from-group">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <p>Нет аккаунта? Создайте новый <a href="{% url 'registration' %}">ТУТ</a></p>
+
+                <button type="submit" class="btn btn-success">Войти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

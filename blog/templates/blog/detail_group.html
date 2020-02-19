@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Люди{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/friend.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'blog/menu.html' %}
+    <div class="container">
+        <div class="col">
+            <h1>Описание группы</h1>
+            <p>Название группы: <span class="lead h2">{{ community.name }}</span></p>
+            <p>Описание: {{ community.description }}</p>
+            <p>Создатель: <a href="{% url 'user_detail' community.creator.username %}">{{ community.creator }}</a></p>
+
+            {% if community.img_community %}
+                Изображение <img src="{{ community.img_community.url }}" alt="avatar" width="250" height="250"/>
+            {% endif %}
+
+        </div>
+        <form class="contact-form-class" method="POST">
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-success">Подписаться/Отписаться</button>
+        </form>
+
+        <p>Кто подписан: </p>
+
+        {% for user in group_users %}
+
+            <a href="{% url 'user_detail' username=user.username %}">{{ user.username }}</a><br>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

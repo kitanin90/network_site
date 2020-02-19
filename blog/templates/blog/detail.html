@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Люди{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/friend.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'blog/menu.html' %}
+    <div class="container">
+        <form class="contact-form-class" method="POST">
+            {% csrf_token %}
+
+            <h1>Карточка пользователя</h1>
+            <p>{{ user.last_name }}</p>
+            <p>{{ user.first_name }}</p>
+            <p>{{ user.email }}</p>
+            <p>{{ user.date_of_birth }}</p>
+            <p>avatar{{ user.avatar }}</p>
+
+            <button type="submit" class="btn btn-success">Добавить/Удалить</button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Группы{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/group.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    {% include 'blog/menu.html' %}
+    <div class="container">
+        <div class="group__block ">
+            {% if user.is_authenticated %}
+                <div class="row">
+                    <div class="col-4">
+                        <h5>Группы, на которые вы подписаны</h5>
+                        <hr>
+                        {% for group in follow_group %}
+                            <a href="{{ group }}"><h6>{{ group }}</h6></a>
+                        {% empty %}
+                            <p>Вы не состоите не в какой группе</p>
+                        {% endfor %}
+
+                    </div>
+                    <div class="col-4">
+                        <h5>Ваши группы</h5>
+                        <div class="section-add-group">
+                            <p class="lead">
+                                <a href="{% url 'creategroup' %}" style=" border-radius: 10px">Создать свою группу</a>
+                            </p>
+                        </div>
+                        <hr>
+                        {% for group in my_groups %}
+                            <div class="row">
+                                <p class="col">
+                                    <a href="{% url 'group_detail' name=group.name %}">{{ group.name }}</a>
+                                    <span class="col pull-right">
+                                    <a class="btn btn-info" href="{% url 'edit-group' pk=group.id %}">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="{% url 'group-delete' pk=group.id %}">Delete</a>
+                                        </span>
+                                </p>
+                            </div>
+
+                        {% empty %}
+                            <p>Вы не создали ни одной группы</p>
+                        {% endfor %}
+
+                    </div>
+                    <div class="col-4" style="">
+                        <h5>Все группы</h5>
+                        <hr>
+                        {% for group in all_groups %}
+                            <div class="groups">
+                                <a href="{% url 'group_detail' name=group.name %}" class="title">
+                                    {{ group.name }}
+                                </a>
+                                {% empty %}
+                                <p>Вообще не существует групп</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            {% else %}
+                <p>You are not logged in</p>
+                <a href="{% url 'login' %}">Войти</a>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

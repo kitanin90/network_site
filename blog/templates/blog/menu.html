@@ -1,0 +1,35 @@
+<div class="container-fluid" style="padding: 0 0 0 0 ">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid" style="margin-left: 10px;">
+            <a class="navbar-brand" href="#">Network</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1"
+                    aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbar1">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item {% if request.resolver_match.url_name == "workflow" %} active {% endif %}">
+                        <a class="nav-link" href="{% url "workflow" %}">Мой профиль</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == "group" %} active {% endif %}">
+                        <a class="nav-link" href="{% url "group" %}">Группы</a>
+                    </li>
+
+                    <li class="nav-item {% if request.resolver_match.url_name == "friend" %} active {% endif %}">
+                        <a class="nav-link" href="{% url "user_list" %}">Друзья</a>
+                    </li>
+
+                </ul>
+                {% if user.is_authenticated %}
+                    <p class="text-white">{{ user }}</p>
+                {% endif %}
+
+                <a href="{% url 'login' %}" class="btn btn-outline-danger">Выход</a>
+            </div>
+        </div>
+    </nav>
+</div>

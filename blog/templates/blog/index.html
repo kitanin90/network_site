@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+{#    {% include 'blog/menu.html' %}#}
+    <div class="container">
+        <div class="contact-section pt2">
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Авторизация</a>
+            <a href="{% url 'registration' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Регистрация</a>
+        </div>
+    </div>
+
+{% endblock %}

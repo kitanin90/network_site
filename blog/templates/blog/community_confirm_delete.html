@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <form method="post">{% csrf_token %}
+            <p>Хотите удалить группу <b>"{{ community }}"</b>?</p>
+            <input type="submit" value="Удалить">
+        </form>
+    </div>
+{% endblock %}

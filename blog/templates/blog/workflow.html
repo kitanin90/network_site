@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{#{% block style %}#}
+{#    <link rel="stylesheet" href="{% static 'css/friend.css' %}">#}
+{#{% endblock %}#}
+
+{% block content %}
+
+    {% include 'blog/menu.html' %}
+    <div class="container">
+        <h1>Личная страница</h1>
+        <h4>Твое имя: {{ account.first_name }}</h4>
+        <h4>Твоя фамилия: {{ account.last_name }}</h4>
+        <h4>Твоя дата рождения: {{ account.date_of_birth }}</h4>
+        {% if account.avatar %}
+            <h3>Твоя аватарка: <img src="{{ account.avatar.url }}" alt="avatar" width="250" height="250"/></h3>
+        {% endif %}
+
+        <a href="{% url 'my_profile-detail' account %}">Изменить профиль</a>
+
+    </div>
+{% endblock %}

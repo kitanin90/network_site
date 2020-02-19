@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Друзья{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/friend.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    {% include 'blog/menu.html' %}
+    <div class="container">
+        <div id="people-list">
+            <div class="row">
+                <div class="col">
+                    <h1>Ваши подписки</h1>
+                    <hr>
+                    {% for friend in follow_users %}
+                        <div class="row">
+                            <a href="{{ friend.user_to }}">{{ friend.user_to }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-4">
+                    <h1>Все пользователи</h1>
+                    <hr>
+                    {% for user in users %}
+                        <div class="user">
+                            <div class="info">
+
+                                <a href="{{ user.username }}" class="title">
+                                    {{ user.username }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
