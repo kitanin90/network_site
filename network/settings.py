@@ -24,7 +24,7 @@ SECRET_KEY = '2_v^j0ku!nxux)1(6$=-17u8&eroneq_u@!x)p3+_0boo#%9vw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['kitanin-newtwork.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['testapp-kitanin.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
