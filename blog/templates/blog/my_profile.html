@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Мой профиль{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/myprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    {% include 'blog/menu.html' %}
+    <h1>Все получилось!</h1>
+    <hr>
+    <h4>Можете продолжить свою работу</h4>
+{% endblock %}
