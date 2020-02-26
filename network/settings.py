@@ -24,7 +24,7 @@ SECRET_KEY = '2_v^j0ku!nxux)1(6$=-17u8&eroneq_u@!x)p3+_0boo#%9vw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testapp-kitanin.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '']
 
 # Application definition
 
@@ -73,23 +73,24 @@ WSGI_APPLICATION = 'network.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8kkvmfdvdooli',
-        'USER': 'ftedvqqmeadobr',
-        'PASSWORD': '8765e578c146b93300495d6f594ea75ca00c3a5c122b4beaafb88624fdd6241a',
-        'HOST': 'ec2-184-72-236-3.compute-1.amazonaws.com',
-        'PORT': '',
-    }
-}
-#
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mydatabase',
+#         'USER': 'mydatabaseuser',
+#         'PASSWORD': 'mypassword',
+#         'HOST': '',
+#         'PORT': '5432',
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
